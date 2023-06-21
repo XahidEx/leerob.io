@@ -95,6 +95,7 @@ const components = {
   Callout,
   ProsCard,
   ConsCard,
+  Tweet,
 };
 
 interface MdxProps {
@@ -104,14 +105,10 @@ interface MdxProps {
 
 export function Mdx({ code, tweets }: MdxProps) {
   const Component = useMDXComponent(code);
-  const StaticTweet = ({ id }) => {
-    const tweet = tweets.find((tweet) => tweet.id === id);
-    return <Tweet {...tweet} />;
-  };
 
   return (
     <article className="prose prose-quoteless prose-neutral dark:prose-invert">
-      <Component components={{ ...components, StaticTweet }} />
+      <Component components={{ ...components }} />
     </article>
   );
 }
